@@ -1,0 +1,37 @@
+[
+{
+"Folder": "C:\\Users\\javie\\OneDrive\\Escritorio\\SDSTestBackup",
+"Cycle": "Daily",
+"Scheme": "Full"
+},
+{
+"Folder": "C:\\Users\\javie\\OneDrive\\Escritorio\\SDSTestBackup2",
+"Cycle": "Weekly",
+"Scheme": "Full"
+},
+{
+"Folder": "C:\\Users\\javie\\OneDrive\\Escritorio\\SDSTestBackup2",
+"Cycle": "Monthly",
+"Scheme": "Full"
+},
+{
+"Folder": "C:\\Users\\javie\\OneDrive\\Escritorio\\SDSTestBackup",
+"Cycle": "Daily",
+"Scheme": "Full"
+},
+{
+"Folder": "C:\\Users\\javie\\OneDrive\\Escritorio\\SDSTestBackup",
+"Cycle": "Daily",
+"Scheme": "Incremental"
+},
+{
+"Folder": "C:\\Users\\javie\\OneDrive\\Escritorio\\SDSTestBackup",
+"Cycle": "Daily",
+"Scheme": "Differential"
+},
+{
+"Folder": "C:\\Users\\javie\\OneDrive\\Escritorio\\SDSTestBackup2",
+"Cycle": "Monthly",
+"Scheme": "Differential"
+}
+]

@@ -1,0 +1,96 @@
+<!doctype html>
+<html>
+	<head>
+		<title>Counter</title>
+		<link rel="shortcut icon" href="favicon.png">
+		<style>
+		* { margin: 0; padding: 0; box-sizing: border-box; user-select: none; }
+		body {background-color: #e7e7e7; font-family: 'Helvetika Neue', Arial, sans-serif; font-size: 15px; text-align: center; }
+		.selector{ height: 50px; width: 50px; background-color: blue;}
+		tr{background-color: #F5F5F5;}
+		th{background-color: white;}
+		table { width: 750px; border-collapse: collapse; margin:50px auto; } 
+		tr:nth-of-type(odd) { background: #eee; }
+		th { background: #3498db; color: white; font-weight: bold; }
+		td, th { padding: 10px; border: 1px solid #ccc; text-align: left; font-size: 18px;}	
+		@media only screen and (max-width: 760px), (min-device-width: 768px) and (max-device-width: 1024px)  { 
+		table { width: 100%; }
+		table, thead, tbody, th, td, tr { display: block; }
+		thead tr { position: absolute; top: -9999px; left: -9999px; }
+		tr { border: 1px solid #ccc; } 
+		td { border: none; border-bottom: 1px solid #eee; position: relative; padding-left: 50%; }
+		td:before { position: absolute; top: 6px; left: 6px; width: 45%; padding-right: 10px; white-space: nowrap; content: attr(data-column); color: #000; font-weight: bold; }
+		}
+		</style>
+	</head>
+	<body onload=start()>
+		<!-- UI layout -->
+		<div>
+			<p>Upload new file</p>
+			<input id="fileLocation" type="text" placeholder="file path"/>
+			<select id="selectCycle">
+				<option value="Daily"> Daily </option>
+				<option value="Weekly"> Weekly </option>
+				<option value="Monthly"> Monthly </option>
+			</select>
+			<select id="selectScheme">
+				<option value="Full"> Full </option>
+				<option value="Incremental"> Incremental </option>
+				<option value="Differential"> Differential </option>
+			</select>
+			<button onclick="handleFiles()">upload</button>
+		</div>
+		<div>
+		<!-- additional content can be placed here, for now nothing yet-->
+		<p style="font-size: 20px; margin-top:10px;">Current files</p>
+		<table>
+			<thead>
+				<tr>
+				  <th>Folder</th>
+				  <th>Cycle</th>
+				  <th>Scheme</th>
+				</tr>
+			</thead>
+			<tbody>
+				
+			</tbody>
+		</table>
+		</div>
+		<script>
+			const inputElement = document.getElementById("fileLocation");
+
+			// We use async/await because Go functions are asynchronous
+			const render = async () => {
+				// switch page when call render.
+				//container.innerText = `${await }`;
+			};
+
+			async function populateTable() {
+				var user = await getUser();
+				var arr = await getFilesArr();				
+				var nHTML = "";
+				if (arr) {
+					var i = 0;
+					arr.forEach(function(arrItem){
+						var td = '<tr>';
+						td += '<td>'+arrItem[0]+'</td>';
+						td += '<td>'+arrItem[1]+'</td>';
+						td += '<td>'+arrItem[2]+'</td>';
+						nHTML += td + '</tr>';
+						i++
+					});
+					document.querySelector('tbody').innerHTML = nHTML;
+				}
+			}
+
+			async function handleFiles() {
+				var cycle = document.getElementById('selectCycle').value
+				var scheme = document.getElementById('selectScheme').value
+				await filesToGo(inputElement.value, cycle, scheme);
+				populateTable();
+			}
+
+			populateTable();
+		</script>
+	</body>
+</html>
